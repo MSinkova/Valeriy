@@ -23,103 +23,133 @@ public class SpeedElements {
        -присвоение
        -получение
         */
-        int count;
-        ArrayList<String> speedArrayList = new ArrayList<String>(100000);
-        LinkedList<String> speedLinkedList = new LinkedList<String>();
-        long t1 = System.currentTimeMillis();
+        testAddArrayList();
+        testAddLinkedList();
+        testAddIndexArrayList();
+        testAddIndexLinkedList();
+        testSetArrayList();
+        testSetLinkedList();
+        testGetArrayList();
+        testGetLinkedList();
+        testRemoveArrayList();
+        testRemoveLinkedList();
+    }
 
-        //Добавление элемента в конец списка
-        for(count = 0; count < 100000; count++) {
-            speedArrayList.add("Добавление элемента" + count);
+    public static void testAddArrayList() {
+        ArrayList<String> objectArrayList = new ArrayList<>();
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.add("Заполнен элемент "+ count);
         }
-        long t2 = System.currentTimeMillis();
-        System.out.println("array add " + count + "：" + (t2 - t1));
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода add ArraytList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        for(count = 0; count < 100000; count++) {
-            speedLinkedList.add("Добавление элемента" + count);
+    public static void testAddLinkedList() {
+        LinkedList<String> objectLinkedList = new LinkedList<>();
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.add("Заполнен элемент "+ count);
         }
-        long t3 = System.currentTimeMillis();
-        System.out.println("linked add " + count + "：" + (t3 - t2));
-        if(t2 - t1 > t3 - t2) {
-            System.out.println("LinkedList is faster");
-        } else {
-            System.out.println("ArrayList is faster");
-        }
-        System.out.println();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода add LinkedList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        //Вставка элемента по индексу
-        for(count = 0; count < 100000; count++) {
-            speedArrayList.add(count,"вставили элемент по индексу: " + count);
+    public static void testAddIndexArrayList() {
+        ArrayList<String> objectArrayList = new ArrayList<>();
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.add(count, "Заполнен элемент "+ count);
         }
-        long t4 = System.currentTimeMillis();
-        System.out.println("array add index " + count + "：" + (t4 - t3));
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода add по index ArraytList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        for(count = 0; count < 100000; count++) {
-            speedLinkedList.add(count,"вставили элемент по индексу: " + count);
+    public static void testAddIndexLinkedList() {
+        LinkedList<String> objectLinkedList = new LinkedList<>();
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.add(count,"Заполнен элемент "+ count);
         }
-        long t5 = System.currentTimeMillis();
-        System.out.println("linked add index " + count + "：" + (t5 - t4));
-        if(t4 - t3 > t5 - t4) {
-            System.out.println("LinkedList is faster");
-        } else {
-            System.out.println("ArrayList is faster");
-        }
-        System.out.println();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода add по index LinkedList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        //Удаление элемента
-        for (count = 0; count < 100000; count++) {
-            speedArrayList.remove(count);
+    public static void testSetArrayList() {
+        ArrayList<String> objectArrayList = new ArrayList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.add("Заполнен элемент "+ count);
         }
-        long t6 = System.currentTimeMillis();
-        System.out.println("array remove " + count + "：" + (t6 - t5));
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.set(count, "ArrayList " + count);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода set ArrayList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        for (count = 0; count < 100000; count++) {
-            speedLinkedList.remove(count);
+    public static void testSetLinkedList() {
+        LinkedList<String> objectLinkedList = new LinkedList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.add("Заполнен элемент "+ count);
         }
-        long t7 = System.currentTimeMillis();
-        System.out.println("linked remove " + count + "：" + (t7 - t6));
-        if(t6 - t5 > t7 - t6) {
-            System.out.println("LinkedList is faster");
-        } else {
-            System.out.println("ArrayList is faster");
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.set(count, " - элемент вставлен в список");
         }
-        System.out.println();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода set LinkedList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        //Присвоение элемента
-        for (count = 0; count < 100000; count++) {
-            speedArrayList.set(count, "вставили элемент по индексу: " + count);
+    public static void testGetArrayList() {
+        ArrayList<String> objectArrayList = new ArrayList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.add("Заполнен элемент "+ count);
         }
-        long t8 = System.currentTimeMillis();
-        System.out.println("array set " + count + "：" + (t8 - t7));
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.get(count);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода get ArrayList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        for (count = 0; count < 100000; count++) {
-            speedLinkedList.set(count, "вставили элемент по индексу: " + count);
+    public static void testGetLinkedList() {
+        LinkedList<String> objectLinkedList = new LinkedList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.add("Заполнен элемент "+ count);
         }
-        long t9 = System.currentTimeMillis();
-        System.out.println("linked set " + count + "：" + (t9 - t8));
-        if(t8 - t7 > t9 - t8) {
-            System.out.println("LinkedList is faster");
-        } else {
-            System.out.println("ArrayList is faster");
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.get(count);
         }
-        System.out.println();
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода get LinkedList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        //Получение элемента
-        for (count = 0; count < 100000; count++) {
-            speedArrayList.get(count);
+    public static void testRemoveArrayList() {
+        ArrayList<String> objectArrayList = new ArrayList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectArrayList.add("Заполнен элемент "+ count);
         }
-        long t10 = System.currentTimeMillis();
-        System.out.println("array get " + count + "：" + (t10 - t9));
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 50000; count++) {
+            objectArrayList.remove(count);
+        }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода remove ArrayList с размером = 100000, время выполнения: " + (endTime - startTime));
+    }
 
-        for (count = 0; count < 100000; count++) {
-            speedLinkedList.get(count);
+    public static void testRemoveLinkedList() {
+        LinkedList<String> objectLinkedList = new LinkedList<>();
+        for(int count = 0; count < 100000; count++) {
+            objectLinkedList.add("Заполнен элемент "+ count);
         }
-        long t11 = System.currentTimeMillis();
-        System.out.println("linked get " + count + "：" + (t11 - t10));
-        if(t10 - t9 > t11 - t10) {
-            System.out.println("LinkedList is faster");
-        } else {
-            System.out.println("ArrayList is faster");
+        long startTime = System.currentTimeMillis();
+        for(int count = 0; count < 50000; count++) {
+            objectLinkedList.remove(count);
         }
+        long endTime = System.currentTimeMillis();
+        System.out.println("Тест на проверку работы метода remove LinkedList с размером = 100000, время выполнения: " + (endTime - startTime));
     }
 }
